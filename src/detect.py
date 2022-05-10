@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # YOLOv5 by Ultralytics, GPL-3.0 license
 # """
