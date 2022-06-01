@@ -1,5 +1,10 @@
 /.vscode
 /runs
+yolo.py
 
 yolov5s.pt
 /note.txt
+
+__pycache__/
+models/__pycache__/
+utils/__pycache__/
