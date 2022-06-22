@@ -1,6 +1,7 @@
 /.vscode
 /runs
 yolo.py
+/launch/test.launch
 
 yolov5s.pt
 /note.txt
