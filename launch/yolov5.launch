@@ -1,0 +1,60 @@
+<launch>
+    <arg name="weights"           value="weights/yolov5s.pt"/>        <!-- model.pt path(s) -->
+    <arg name="source"            value="data/images"/>               <!-- file/dir/URL/glob, 0 for webcam -->
+    <arg name="data"              value="data/coco128.yaml"/>         <!-- dataset.yaml path -->
+    <arg name="imgsz_h"           value="640"/>                       <!-- inference size (height) -->
+    <arg name="imgsz_w"           value="640"/>                       <!-- inference size (width) -->
+    <arg name="conf_thres"        value="0.25"/>                      <!-- confidence threshold -->
+    <arg name="iou_thres"         value="0.45"/>                      <!-- NMS IOU threshold -->
+    <arg name="max_det"           value="1000"/>                      <!-- maximum detections per image -->
+    <arg name="device"            value=""/>                          <!-- cuda device, i.e. 0 or 0,1,2,3 or cpu -->
+    <arg name="view_img"          value="False"/>                     <!-- show results -->
+    <arg name="save_txt"          value="False"/>                     <!-- save results to *.txt -->
+    <arg name="save_conf"         value="False"/>                     <!-- save confidences in -'-save-txt labels -->
+    <arg name="save_crop"         value="False"/>                     <!-- save cropped prediction boxes -->
+    <arg name="nosave"            value="True"/>                      <!-- do not save images/videos -->
+    <arg name="classes"           value="None"/>                      <!-- filter by class: -'-class 0, or -'-class 0 2 3 -->
+    <arg name="agnostic_nms"      value="False"/>                     <!-- class-agnostic NMS -->
+    <arg name="augment"           value="False"/>                     <!-- augmented inference -->
+    <arg name="visualize"         value="False"/>                     <!-- visualize features -->
+    <arg name="update"            value="False"/>                     <!-- update all models -->
+    <arg name="project"           value="runs/detect"/>               <!-- save results to project/name -->
+    <arg name="name"              value="exp"/>                       <!-- save results to project/name -->
+    <arg name="exist_ok"          value="False"/>                     <!-- existing project/name ok, do not increment -->
+    <arg name="line_thickness"    value="3"/>                         <!-- bounding box thickness (pixels) -->
+    <arg name="hide_labels"       value="False"/>                     <!-- hide labels -->
+    <arg name="hide_conf"         value="False"/>                     <!-- hide confidences -->
+    <arg name="half"              value="False"/>                     <!-- use FP16 half-precision inference -->
+    <arg name="dnn"               value="False"/>                     <!-- use OpenCV DNN for ONNX inference -->
+
+    <node name="detect" pkg="YOLOv5_ROS" type="detect.py" output="screen">
+        <param name="weights"           value="$(arg weights)"/>        <!-- model.pt path(s) -->
+        <param name="source"            value="$(arg source)"/>               <!-- file/dir/URL/glob, 0 for webcam -->
+        <param name="data"              value="$(arg data)"/>         <!-- dataset.yaml path -->
+        <param name="imgsz_h"           value="$(arg imgsz_h)"/>                       <!-- inference size (height) -->
+        <param name="imgsz_w"           value="$(arg imgsz_w)"/>                       <!-- inference size (width) -->
+        <param name="conf_thres"        value="$(arg conf_thres)"/>                      <!-- confidence threshold -->
+        <param name="iou_thres"         value="$(arg iou_thres)"/>                      <!-- NMS IOU threshold -->
+        <param name="max_det"           value="$(arg max_det)"/>                      <!-- maximum detections per image -->
+        <param name="device"            value="$(arg device)"/>                          <!-- cuda device, i.e. 0 or 0,1,2,3 or cpu -->
+        <param name="view_img"          value="$(arg view_img)"/>                     <!-- show results -->
+        <param name="save_txt"          value="$(arg save_txt)"/>                     <!-- save results to *.txt -->
+        <param name="save_conf"         value="$(arg save_conf)"/>                     <!-- save confidences in -'-save-txt labels -->
+        <param name="save_crop"         value="$(arg save_crop)"/>                     <!-- save cropped prediction boxes -->
+        <param name="nosave"            value="$(arg nosave)"/>                      <!-- do not save images/videos -->
+        <param name="classes"           value="$(arg classes)"/>                      <!-- filter by class: -'-class 0, or -'-class 0 2 3 -->
+        <param name="agnostic_nms"      value="$(arg agnostic_nms)"/>                     <!-- class-agnostic NMS -->
+        <param name="augment"           value="$(arg augment)"/>                     <!-- augmented inference -->
+        <param name="visualize"         value="$(arg visualize)"/>                     <!-- visualize features -->
+        <param name="update"            value="$(arg update)"/>                     <!-- update all models -->
+        <param name="project"           value="$(arg project)"/>               <!-- save results to project/name -->
+        <param name="name"              value="$(arg name)"/>                       <!-- save results to project/name -->
+        <param name="exist_ok"          value="$(arg exist_ok)"/>                     <!-- existing project/name ok, do not increment -->
+        <param name="line_thickness"    value="$(arg line_thickness)"/>                         <!-- bounding box thickness (pixels) -->
+        <param name="hide_labels"       value="$(arg hide_labels)"/>                     <!-- hide labels -->
+        <param name="hide_conf"         value="$(arg hide_conf)"/>                     <!-- hide confidences -->
+        <param name="half"              value="$(arg half)"/>                     <!-- use FP16 half-precision inference -->
+        <param name="dnn"               value="$(arg dnn)"/>                     <!-- use OpenCV DNN for ONNX inference -->
+        
+    </node>
+</launch>
