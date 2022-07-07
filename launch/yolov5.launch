@@ -1,7 +1,7 @@
 <launch>
-    <arg name="weights"           value="weights/yolov5s.pt"/>        <!-- model.pt path(s) -->
-    <arg name="source"            value="data/images"/>               <!-- file/dir/URL/glob, 0 for webcam -->
-    <arg name="data"              value="data/coco128.yaml"/>         <!-- dataset.yaml path -->
+    <arg name="weights"           value="/home/hoorad/catkin_ws/src/yolov5_ros/weights/yolov5s.pt"/>        <!-- model.pt path(s) -->
+    <arg name="source"            value="/home/hoorad/catkin_ws/src/yolov5_ros/data/images"/>               <!-- file/dir/URL/glob, 0 for webcam -->
+    <arg name="data"              value="/home/hoorad/catkin_ws/src/yolov5_ros/data/coco128.yaml"/>         <!-- dataset.yaml path -->
     <arg name="imgsz_h"           value="640"/>                       <!-- inference size (height) -->
     <arg name="imgsz_w"           value="640"/>                       <!-- inference size (width) -->
     <arg name="conf_thres"        value="0.25"/>                      <!-- confidence threshold -->
@@ -27,7 +27,7 @@
     <arg name="half"              value="False"/>                     <!-- use FP16 half-precision inference -->
     <arg name="dnn"               value="False"/>                     <!-- use OpenCV DNN for ONNX inference -->
 
-    <node name="detect" pkg="YOLOv5_ROS" type="detect.py" output="screen">
+    <node name="detect" pkg="yolov5_ros" type="detect.py" output="screen">
         <param name="weights"           value="$(arg weights)"/>        <!-- model.pt path(s) -->
         <param name="source"            value="$(arg source)"/>               <!-- file/dir/URL/glob, 0 for webcam -->
         <param name="data"              value="$(arg data)"/>         <!-- dataset.yaml path -->
